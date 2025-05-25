@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36119.2
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAUI_ProyectoAvance2", "src\AppMAUI\MAUI_ProyectoAvance2.csproj", "{0FEF7FC6-606A-F159-698A-BB778613FE74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiaDivinaWebAPI", "src\WebAPI\RubiaDivinaWebAPI.csproj", "{69099A01-9F16-F367-A4D4-126ADBCCF32C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FEF7FC6-606A-F159-698A-BB778613FE74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FEF7FC6-606A-F159-698A-BB778613FE74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FEF7FC6-606A-F159-698A-BB778613FE74}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0FEF7FC6-606A-F159-698A-BB778613FE74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FEF7FC6-606A-F159-698A-BB778613FE74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FEF7FC6-606A-F159-698A-BB778613FE74}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{69099A01-9F16-F367-A4D4-126ADBCCF32C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69099A01-9F16-F367-A4D4-126ADBCCF32C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69099A01-9F16-F367-A4D4-126ADBCCF32C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69099A01-9F16-F367-A4D4-126ADBCCF32C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FCB66F6D-B927-4FE9-9AD1-0AFA091710F5}
+	EndGlobalSection
+EndGlobal
