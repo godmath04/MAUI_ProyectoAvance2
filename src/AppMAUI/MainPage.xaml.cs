@@ -3,8 +3,6 @@ public partial class MainPage : ContentPage
 {
     public List<string> PromoImages { get; set; }
 
-    int count = 0;
-
     public MainPage()
     {
         InitializeComponent();
@@ -19,15 +17,37 @@ public partial class MainPage : ContentPage
         BindingContext = this;
     }
 
-    private void OnCounterClicked(object sender, EventArgs e)
-    {
-        count++;
 
-        CounterBtn.Text = count == 1
-            ? "Haz clic 1 vez"
-            : $"Haz clic {count} veces";
+        private async void OnClientesClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ClientesPage());
+            }
 
-        SemanticScreenReader.Announce(CounterBtn.Text);
+
+        private async void OnFacturasClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FacturasPage());
+        }
+
+        private async void OnPedidosClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PedidosPage());
+        }
+
+        private async void OnProductoClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProductosPage());
+        }
+
+        private async void OnCategoriaClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CategoriaPage());
+        }
+
+
+
+
+
+
     }
-}
 }
