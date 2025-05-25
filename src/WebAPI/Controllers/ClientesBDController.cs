@@ -82,6 +82,7 @@ namespace RubiaDivinaWebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            cliente.Id = 0; // Forzar a que EF lo trate como nuevo y la DB asigne el Id
             cliente.FechaCreacion = DateTime.UtcNow;
             _context.Cliente.Add(cliente);
             await _context.SaveChangesAsync();
