@@ -25,6 +25,7 @@
     <Color x:Key="Magenta">#FF00FF</Color>
     <Color x:Key="MidnightBlue">#191970</Color>
     <Color x:Key="SecondaryDarkText">#AFAFAF</Color>
+    
 
     <!-- SolidColorBrushes (opcional) -->
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}" />

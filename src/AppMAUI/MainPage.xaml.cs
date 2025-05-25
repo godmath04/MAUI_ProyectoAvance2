@@ -1,25 +1,53 @@
-﻿namespace MAUI_ProyectoAvance2
+﻿namespace MAUI_ProyectoAvance2 {
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public List<string> PromoImages { get; set; }
+
+    public MainPage()
     {
-        int count = 0;
+        InitializeComponent();
 
-        public MainPage()
+        PromoImages = new List<string>
         {
-            InitializeComponent();
-        }
+            "promo1.jpg",
+            "promo2.jpg",
+            "promo3.jpg"
+        };
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
+        BindingContext = this;
     }
 
+
+        private async void OnClientesClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ClientesPage());
+            }
+
+
+        private async void OnFacturasClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FacturasPage());
+        }
+
+        private async void OnPedidosClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PedidosPage());
+        }
+
+        private async void OnProductoClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProductosPage());
+        }
+
+        private async void OnCategoriaClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CategoriaPage());
+        }
+
+
+
+
+
+
+    }
 }
