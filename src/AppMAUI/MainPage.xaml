@@ -4,40 +4,66 @@
              x:Class="MAUI_ProyectoAvance2.MainPage"
              BackgroundColor="{StaticResource White}">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- ENCABEZADO -->
+        <Grid BackgroundColor="{StaticResource Primary}" Padding="20" Row="0">
+            <Label Text="Rubia Divina"
+                   TextColor="{StaticResource White}"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+        </Grid>
 
-            <Image
-                Source="logo.jpg"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="logotipo de la empresa" />
+        <!-- CUERPO -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20" Spacing="25">
 
-            <Label
-                Text="Bienvenido a Rubia Divina, la mejor cervercería de Ibarra!"
-                FontSize="28"
-                FontAttributes="Bold"
-                TextColor="{StaticResource Black}"
-                HorizontalTextAlignment="Center"
-                SemanticProperties.HeadingLevel="Level1" />
+                <!-- CARRUSEL -->
+                <Label Text="Promos del día"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource Primary}"
+                       HorizontalOptions="Center" />
 
-            <Label
-                Text="Bienvenido"
-                FontSize="18"
-                TextColor="{StaticResource Secondary}"
-                HorizontalTextAlignment="Center"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Elaborado por Guevara Galo, Pineda Luis, Torres Julián, Arias Javier" />
+                <CarouselView HeightRequest="300"
+                              IndicatorView="promoIndicators"
+                              ItemsLayout="HorizontalList">
+                    <CarouselView.ItemsSource>
+                        <x:Array Type="{x:Type ImageSource}">
+                            <ImageSource>promo1.jpg</ImageSource>
+                            <ImageSource>promo2.jpg</ImageSource>
+                            <ImageSource>promo3.jpg</ImageSource>
+                        </x:Array>
+                    </CarouselView.ItemsSource>
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Aspect="AspectFill" Source="{Binding}" />
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"               
-                SemanticProperties.Hint="Cuenta cuántas veces haces clic"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Fill" />
-        </VerticalStackLayout>
-    </ScrollView>
+                <!-- Indicadores -->
+                <IndicatorView x:Name="promoIndicators"
+                               HorizontalOptions="Center"
+                               IndicatorColor="{StaticResource Gray200}"
+                               SelectedIndicatorColor="{StaticResource Primary}" />
 
+                <!-- BOTONES -->
+                <Label Text="Elige una opción:"
+                       HorizontalOptions="Center"
+                       FontSize="16"
+                       FontAttributes="Italic"
+                       TextColor="{StaticResource Gray600}" />
+
+                <VerticalStackLayout Spacing="10">
+                    <Button Text="Botón 1" />
+                    <Button Text="Botón 2" />
+                    <Button Text="Botón 3" />
+                    <Button Text="Botón 4" />
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>
