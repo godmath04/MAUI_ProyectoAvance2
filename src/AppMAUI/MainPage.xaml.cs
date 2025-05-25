@@ -1,18 +1,33 @@
-﻿namespace MAUI_ProyectoAvance2
+﻿namespace MAUI_ProyectoAvance2 {
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public List<string> PromoImages { get; set; }
+
+    int count = 0;
+
+    public MainPage()
     {
-        int count = 0;
+        InitializeComponent();
 
-        public MainPage()
+        PromoImages = new List<string>
         {
-            InitializeComponent();
-        }
+            "promo1.jpg",
+            "promo2.jpg",
+            "promo3.jpg"
+        };
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-        }
+        BindingContext = this;
     }
 
+    private void OnCounterClicked(object sender, EventArgs e)
+    {
+        count++;
+
+        CounterBtn.Text = count == 1
+            ? "Haz clic 1 vez"
+            : $"Haz clic {count} veces";
+
+        SemanticScreenReader.Announce(CounterBtn.Text);
+    }
+}
 }

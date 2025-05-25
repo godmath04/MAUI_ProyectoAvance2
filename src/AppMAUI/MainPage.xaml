@@ -4,66 +4,71 @@
              x:Class="MAUI_ProyectoAvance2.MainPage"
              BackgroundColor="{StaticResource White}">
 
-    <Grid RowDefinitions="Auto,*,Auto">
-        <!-- ENCABEZADO -->
-        <Grid BackgroundColor="{StaticResource Primary}" Padding="20" Row="0">
-            <Label Text="Rubia Divina"
-                   TextColor="{StaticResource White}"
-                   FontSize="20"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-        </Grid>
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
 
-        <!-- CUERPO -->
-        <ScrollView Grid.Row="1">
-            <VerticalStackLayout Padding="20" Spacing="25">
+            <Image
+                Source="logo.jpg"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="logotipo de la empresa" />
 
-                <!-- CARRUSEL -->
-                <Label Text="Promos del día"
-                       FontSize="18"
-                       FontAttributes="Bold"
-                       TextColor="{StaticResource Primary}"
-                       HorizontalOptions="Center" />
+            <Label
+                Text="Bienvenido a Rubia Divina, la mejor cervercería de Ibarra!"
+                FontSize="28"
+                FontAttributes="Bold"
+                TextColor="{StaticResource Black}"
+                HorizontalTextAlignment="Center"
+                SemanticProperties.HeadingLevel="Level1" />
 
-                <CarouselView HeightRequest="300"
-                              IndicatorView="promoIndicators"
-                              ItemsLayout="HorizontalList">
-                    <CarouselView.ItemsSource>
-                        <x:Array Type="{x:Type ImageSource}">
-                            <ImageSource>promo1.jpg</ImageSource>
-                            <ImageSource>promo2.jpg</ImageSource>
-                            <ImageSource>promo3.jpg</ImageSource>
-                        </x:Array>
-                    </CarouselView.ItemsSource>
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <Image Aspect="AspectFill" Source="{Binding}" />
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
+            <Label
+                Text="Bienvenido"
+                FontSize="18"
+                TextColor="{StaticResource Secondary}"
+                HorizontalTextAlignment="Center"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Elaborado por Guevara Galo, Pineda Luis, Torres Julián, Arias Javier" />
 
-                <!-- Indicadores -->
-                <IndicatorView x:Name="promoIndicators"
-                               HorizontalOptions="Center"
-                               IndicatorColor="{StaticResource Gray200}"
-                               SelectedIndicatorColor="{StaticResource Primary}" />
+            <CarouselView
+                HeightRequest="{OnPlatform Android=300, iOS=300, WinUI=350}" 
+                ItemsSource="{Binding PromoImages}"
+                HorizontalOptions="Fill"
+                IndicatorView="promoIndicator"
+                PeekAreaInsets="50"
+                Margin="0,20,0,0">
 
-                <!-- BOTONES -->
-                <Label Text="Elige una opción:"
-                       HorizontalOptions="Center"
-                       FontSize="16"
-                       FontAttributes="Italic"
-                       TextColor="{StaticResource Gray600}" />
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Image 
+                Source="{Binding}" 
+                Aspect="AspectFill" 
+                HeightRequest="300"
+                SemanticProperties.Description="Imagen promocional" />
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
 
-                <VerticalStackLayout Spacing="10">
-                    <Button Text="Botón 1" />
-                    <Button Text="Botón 2" />
-                    <Button Text="Botón 3" />
-                    <Button Text="Botón 4" />
-                </VerticalStackLayout>
 
-            </VerticalStackLayout>
-        </ScrollView>
-    </Grid>
+            </CarouselView>
+
+
+            <IndicatorView 
+            x:Name="promoIndicator" 
+            HorizontalOptions="Center" 
+            IndicatorColor="{StaticResource Gray400}" 
+            SelectedIndicatorColor="{StaticResource Primary}" 
+            Margin="0,10" />
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Click me"
+                TextColor="{StaticResource White}"
+                BackgroundColor="{StaticResource Primary}"
+                SemanticProperties.Hint="Cuenta cuántas veces haces clic"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Fill" />
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>
