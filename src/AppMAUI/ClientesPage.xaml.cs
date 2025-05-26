@@ -12,25 +12,35 @@ public partial class ClientesPage : ContentPage
     {
         InitializeComponent();
 
-        // ? Inicializar el servicio correctamente con HttpClient
+        // ? Crear HttpClient con URL del host (adaptada para Android)
+#if ANDROID
         var httpClient = new HttpClient
         {
-#if ANDROID
-            BaseAddress = new Uri("https://10.0.2.2:7196/")
-#else
-            BaseAddress = new Uri("https://localhost:7196/")
-#endif
+            BaseAddress = new Uri("http://10.0.2.2:5184/")
         };
+#else
+        var httpClient = new HttpClient
+        {
+            BaseAddress = new Uri("https://localhost:7196/")
+        };
+#endif
 
         _clienteService = new ClienteService(httpClient);
-        BindingContext = this;
 
+        BindingContext = this;
         CargarClientes();
     }
 
     private async void CargarClientes()
     {
-        Clientes = await _clienteService.GetClientesAsync(); // ? método correcto
-        OnPropertyChanged(nameof(Clientes));
+        try
+        {
+            Clientes = await _clienteService.GetClientesAsync();
+            OnPropertyChanged(nameof(Clientes));
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"No se pudo conectar a la API.\n{ex.Message}", "OK");
+        }
     }
 }
