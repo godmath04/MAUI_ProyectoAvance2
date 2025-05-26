@@ -5,18 +5,29 @@
              xmlns:model="clr-namespace:MAUI_ProyectoAvance2.Models"
              Title="Clientes">
 
+    <!-- ToolbarItem dentro de ToolbarItems -->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+" Clicked="OnAgregarClienteClicked" />
+    </ContentPage.ToolbarItems>
+
+    <!-- Content -->
     <CollectionView ItemsSource="{Binding Clientes}">
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Frame BorderColor="Gray" Margin="10" Padding="10">
-                    <VerticalStackLayout>
-                        <Label Text="{Binding Nombre}" FontSize="18" FontAttributes="Bold"/>
-                        <Label Text="{Binding Apellido}" />
-                        <Label Text="{Binding Telefono}" />
-                        <Label Text="{Binding Correo}" />
-                        <Label Text="{Binding FechaCreacion, StringFormat='Creado: {0:dd/MM/yyyy}'}" FontSize="12"/>
-                    </VerticalStackLayout>
-                </Frame>
+                <SwipeView>
+                    <SwipeView.RightItems>
+                        <SwipeItems>
+                            <SwipeItem Text="Editar" BackgroundColor="Orange" Invoked="OnEditarCliente" />
+                            <SwipeItem Text="Eliminar" BackgroundColor="Red" Invoked="OnEliminarCliente" />
+                        </SwipeItems>
+                    </SwipeView.RightItems>
+                    <Frame Margin="10">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Nombre}" FontAttributes="Bold" />
+                            <Label Text="{Binding Correo}" FontSize="12" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </SwipeView>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

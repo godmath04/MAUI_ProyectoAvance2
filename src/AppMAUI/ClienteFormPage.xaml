@@ -1,0 +1,16 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_ProyectoAvance2.ClienteFormPage"
+             Title="Cliente">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Entry x:Name="NombreEntry" Placeholder="Nombre" />
+            <Entry x:Name="ApellidoEntry" Placeholder="Apellido" />
+            <Entry x:Name="TelefonoEntry" Placeholder="Teléfono" />
+            <Entry x:Name="CorreoEntry" Placeholder="Correo" Keyboard="Email" />
+
+            <Button Text="Guardar" Clicked="OnGuardarClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
