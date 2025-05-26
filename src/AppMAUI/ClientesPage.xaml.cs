@@ -35,12 +35,14 @@ public partial class ClientesPage : ContentPage
     {
         try
         {
+            Console.WriteLine("Llamando al servicio...");
             Clientes = await _clienteService.GetClientesAsync();
+            Console.WriteLine("Respuesta recibida.");
             OnPropertyChanged(nameof(Clientes));
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Error", $"No se pudo conectar a la API.\n{ex.Message}", "OK");
+            await DisplayAlert("Error", $"No se pudo conectar a la API.\n\n{ex.GetType().Name}: {ex.Message}", "OK"); ;
         }
     }
 }
