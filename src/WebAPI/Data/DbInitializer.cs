@@ -14,10 +14,10 @@ namespace RubiaDivinaWebAPI.Data
             {
                 var categorias = new List<Categoria>
             {
-                new() { Id = 1, Nombre = "Bebidas" },
-                new() { Id = 2, Nombre = "Postres" },
-                new() { Id = 3, Nombre = "Picadas" },
-                new() { Id = 4, Nombre = "Cervezas" }
+                new() { Nombre = "Bebidas" },
+                new() { Nombre = "Postres" },
+                new() { Nombre = "Picadas" },
+                new() { Nombre = "Cervezas" }
             };
                 context.Categorias.AddRange(categorias);
                 context.SaveChanges();
