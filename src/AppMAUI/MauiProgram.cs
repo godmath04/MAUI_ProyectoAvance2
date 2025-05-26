@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using System.Net.Http;
+using MAUI_ProyectoAvance2.Services;
 
 namespace MAUI_ProyectoAvance2
 {
@@ -18,6 +20,14 @@ namespace MAUI_ProyectoAvance2
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+            //Registra HttpClient con la URL base del API
+            builder.Services.AddSingleton(new HttpClient
+            {
+                BaseAddress = new Uri("https://localhost:7196/api/")
+            });
+
+            //Registra servicio cliente
+            builder.Services.AddSingleton<ClienteService>();
 
             return builder.Build();
         }
