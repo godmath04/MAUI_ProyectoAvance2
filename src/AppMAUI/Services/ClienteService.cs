@@ -19,29 +19,29 @@ namespace MAUI_ProyectoAvance2.Services
 
         public async Task<List<Cliente>> GetClientesAsync()
         {
-            return await _httpClient.GetFromJsonAsync<List<Cliente>>("ClientesBD");
+            return await _httpClient.GetFromJsonAsync<List<Cliente>>("api/ClientesBD");
         }
 
         public async Task<Cliente> GetClienteAsync(int id)
         {
-            return await _httpClient.GetFromJsonAsync<Cliente>($"ClientesBD/{id}");
+            return await _httpClient.GetFromJsonAsync<Cliente>($"api/ClientesBD/{id}");
         }
 
         public async Task<bool> CreateClienteAsync(Cliente cliente)
         {
-            var response = await _httpClient.PostAsJsonAsync("ClientesBD", cliente);
+            var response = await _httpClient.PostAsJsonAsync("api/ClientesBD", cliente);
             return response.IsSuccessStatusCode;
         }
 
         public async Task<bool> UpdateClienteAsync(Cliente cliente)
         {
-            var response = await _httpClient.PutAsJsonAsync($"ClientesBD/{cliente.Id}", cliente);
+            var response = await _httpClient.PutAsJsonAsync($"api/ClientesBD/{cliente.Id}", cliente);
             return response.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteClienteAsync(int id)
         {
-            var response = await _httpClient.DeleteAsync($"ClientesBD/{id}");
+            var response = await _httpClient.DeleteAsync($"api/ClientesBD/{id}");
             return response.IsSuccessStatusCode;
         }
     }

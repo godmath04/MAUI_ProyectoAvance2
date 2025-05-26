@@ -2,11 +2,22 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_ProyectoAvance2.ClientesPage"
-             Title="ClientesPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             xmlns:model="clr-namespace:MAUI_ProyectoAvance2.Models"
+             Title="Clientes">
+
+    <CollectionView ItemsSource="{Binding Clientes}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Frame BorderColor="Gray" Margin="10" Padding="10">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Nombre}" FontSize="18" FontAttributes="Bold"/>
+                        <Label Text="{Binding Apellido}" />
+                        <Label Text="{Binding Telefono}" />
+                        <Label Text="{Binding Correo}" />
+                        <Label Text="{Binding FechaCreacion, StringFormat='Creado: {0:dd/MM/yyyy}'}" FontSize="12"/>
+                    </VerticalStackLayout>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>
