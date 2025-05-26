@@ -1,10 +1,10 @@
-﻿namespace MAUI_ProyectoAvance2
+﻿namespace MAUI_ProyectoAvance2;
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
+
