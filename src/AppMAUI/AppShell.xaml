@@ -5,11 +5,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MAUI_ProyectoAvance2"
     Shell.FlyoutBehavior="Disabled"
-    Title="MAUI_ProyectoAvance2">
+    Title="Rubia Divina">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <ShellContent Title="Inicio" ContentTemplate="{DataTemplate local:MainPage}" />
+        <ShellContent Title="Productos" ContentTemplate="{DataTemplate local:ProductosPage}" />
+        <ShellContent Title="Pedidos" ContentTemplate="{DataTemplate local:PedidosPage}" />
+        <ShellContent Title="Clientes" ContentTemplate="{DataTemplate local:ClientesPage}" />
+        <ShellContent Title="Facturas" ContentTemplate="{DataTemplate local:FacturasPage}" />
+        <ShellContent Title="Categorías" ContentTemplate="{DataTemplate local:CategoriaPage}" />
+    </TabBar>
 
 </Shell>
+

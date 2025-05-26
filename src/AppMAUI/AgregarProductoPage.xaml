@@ -1,0 +1,16 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_ProyectoAvance2.AgregarProductoPage"
+             Title="Agregar Producto">
+
+    <StackLayout Padding="20" Spacing="15">
+        <Entry x:Name="nombreEntry" Placeholder="Nombre del producto" />
+        <Entry x:Name="precioEntry" Placeholder="Precio" Keyboard="Numeric" />
+        <Entry x:Name="stockEntry" Placeholder="Stock" Keyboard="Numeric" />
+
+        <Label Text="Seleccionar Categoría"/>
+        <Picker x:Name="categoriaPicker" Title="Categoría" />
+
+        <Button Text="Guardar" Clicked="OnGuardarClicked" BackgroundColor="DarkGreen" TextColor="White"/>
+    </StackLayout>
+</ContentPage>
