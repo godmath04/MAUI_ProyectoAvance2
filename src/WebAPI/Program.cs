@@ -7,7 +7,24 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<RubiaDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("RubiaDBContext")));
 
-builder.Services.AddControllers();
+// Configurar CORS para React Native
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("ReactNativePolicy", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    // Configuración para mejorar compatibilidad con React Native
+    options.JsonSerializerOptions.PropertyNamingPolicy = null; // Mantener PascalCase
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -21,6 +38,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("ReactNativePolicy");
 
 app.UseHttpsRedirection();
 
