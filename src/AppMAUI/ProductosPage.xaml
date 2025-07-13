@@ -4,16 +4,13 @@
              Title="Productos">
 
     <StackLayout Padding="10">
-        <CollectionView ItemsSource="{Binding Productos}">
+        <CollectionView x:Name="productosListView">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame BorderColor="Gray" Padding="10" Margin="5">
-                        <StackLayout>
-                            <Label Text="{Binding Nombre}" FontSize="18" FontAttributes="Bold"/>
-                            <Label Text="{Binding Precio, StringFormat='Precio: {0:C}'}" />
-                            <Label Text="{Binding Stock, StringFormat='Stock: {0}'}" />
-                        </StackLayout>
-                    </Frame>
+                    <StackLayout Padding="10">
+                        <Label Text="{Binding Nombre}" FontSize="18"/>
+                        <Label Text="{Binding Precio}" FontSize="14" TextColor="Gray"/>
+                    </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

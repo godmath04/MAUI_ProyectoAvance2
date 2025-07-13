@@ -1,26 +1,27 @@
-
 using MAUI_ProyectoAvance2.Models;
 using MAUI_ProyectoAvance2.Services;
-using System.Collections.ObjectModel;
 
 namespace MAUI_ProyectoAvance2;
 
 public partial class ProductosPage : ContentPage
 {
-    public ObservableCollection<Producto> Productos { get; set; } = new();
+    private readonly DatabaseService _db;
 
-    public ProductosPage()
+    public ProductosPage(DatabaseService db)
     {
         InitializeComponent();
-        BindingContext = this;
-        _ = CargarProductos();
+        _db = db;
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await CargarProductos();
     }
 
     private async Task CargarProductos()
     {
-        var api = new ApiService();
-        var lista = await api.GetProductosAsync();
-        foreach (var producto in lista)
-            Productos.Add(producto);
+        var productos = await _db.GetProductosAsync();
+        productosListView.ItemsSource = productos;
     }
 }

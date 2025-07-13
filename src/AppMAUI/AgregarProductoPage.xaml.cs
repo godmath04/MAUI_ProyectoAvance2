@@ -13,6 +13,24 @@ public partial class AgregarProductoPage : ContentPage
         CargarCategorias();
     }
 
+    private readonly DatabaseService _db;
+    private readonly LogService _log;
+
+    public AgregarProductoPage(DatabaseService db, LogService log)
+    {
+        InitializeComponent();
+        _db = db;
+        _log = log;
+        CargarCategorias();
+    }
+
+    public AgregarProductoPage(DatabaseService db)
+    {
+        InitializeComponent();
+        _db = db;
+        CargarCategorias();
+    }
+
     private void CargarCategorias()
     {
         categorias = new List<CategoriaViewModel>
@@ -41,13 +59,26 @@ public partial class AgregarProductoPage : ContentPage
             Stock = int.Parse(stockEntry.Text),
             CategoriaId = ((CategoriaViewModel)categoriaPicker.SelectedItem).Id
         };
+        
+        await _db.AddProductoAsync(producto);
+        _log.EscribirLog($"Producto agregado: {producto.Nombre} con precio {producto.Precio}");
+        await DisplayAlert("Éxito", "Producto guardado y log escrito", "OK");
+
 
         var api = new ApiService();
-        var resultado = await api.AgregarProductoAsync(producto);
+        var resultado = await _db.AddProductoAsync(producto);
 
-        if (resultado)
+        if (resultado == 1)
             await DisplayAlert("Éxito", "Producto guardado", "OK");
         else
+        {
             await DisplayAlert("Error", "No se pudo guardar", "OK");
+        }
+
+        var ruta = Path.Combine(FileSystem.AppDataDirectory, "log.txt");
+        File.AppendAllText(ruta, $"Producto agregado: {producto.Nombre} - {DateTime.Now}\n");
+
+        await DisplayAlert("Éxito", "Producto guardado y log creado", "OK");
+        await Navigation.PopAsync();
     }
 }

@@ -29,6 +29,10 @@ namespace MAUI_ProyectoAvance2
             //Registra servicio cliente
             builder.Services.AddSingleton<ClienteService>();
 
+            builder.Services.AddSingleton<DatabaseService>();
+
+            builder.Services.AddSingleton<LogService>();
+
             return builder.Build();
         }
     }
