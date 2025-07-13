@@ -1,12 +1,21 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_ProyectoAvance2.ProductosPage"
-             Title="ProductosPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Productos">
+
+    <StackLayout Padding="10">
+        <CollectionView ItemsSource="{Binding Productos}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="Gray" Padding="10" Margin="5">
+                        <StackLayout>
+                            <Label Text="{Binding Nombre}" FontSize="18" FontAttributes="Bold"/>
+                            <Label Text="{Binding Precio, StringFormat='Precio: {0:C}'}" />
+                            <Label Text="{Binding Stock, StringFormat='Stock: {0}'}" />
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
 </ContentPage>
